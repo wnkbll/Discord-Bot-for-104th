@@ -3,9 +3,10 @@ import os
 
 from typing import Any
 from parser import parse_main
+from config import settings
 
 data = parse_main()
-path = 'data.json'  # Собственно наименование файла 'path', по умолчанию, файл будет создаваться в папке проекта.
+path = settings['path']  # Собственно наименование файла 'path', по умолчанию, файл будет создаваться в папке проекта.
 
 
 def write_json_file(obj: Any, path: str):
