@@ -36,7 +36,7 @@ def package_data(names, times):
     players = []
 
     for name, time in zip(names, times):
-        if '[104' in name.get_text():  # Вместо '[104' - любая искомая подстрока
+        if '[104' in name.get_text() or '[RC-104' in name.get_text():  # Вместо '[104' - любая искомая подстрока
             players.append({
                 'name': name.get_text(),
                 'time': time.get_text()
