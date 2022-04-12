@@ -18,8 +18,8 @@ def write_json_file(obj: Any, path: str):
 
 
 def read_json_file(path: str) -> dict[str, Any]:
-    """ Функция читает файл 'path'. В нашем случае будет возвраять массив, записанный в файл 'path', однако может
-    возвращаться и любой другой object, например словарь. """
+    """ Функция читает файл 'path'. В нашем случае будет возвращать массив, записанный в файл 'path', однако может
+    возвращаться и любой другой object, например, словарь. """
     if not os.path.exists(path):
         return {}
     with open(path, encoding="utf-8") as json_file:
