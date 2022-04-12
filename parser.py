@@ -10,13 +10,13 @@ HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:99.0) Gec
 
 def get_html(url, params=None):
     """ 'requests.get(url, headers=HEADERS)' возвращает скрытый html-код по ссылке 'url', 'headers=HEADERS' позволяет
-    нам передать 'user-agent' для того, чтобы сайт не подумал что запрос оправляется ботом, и избежать бана. """
+    нам передать 'user-agent' для того, чтобы сайт не подумал, что запрос оправляется ботом, и избежать бана. """
     return requests.get(url, headers=HEADERS)
 
 
 def get_content(html):
     """ Класс BeautifulSoap позволяет получить красивый html-код. Метод 'find' возвращает кусок дерева html-кода по
-    искомому идентификатору и классу. Метод 'find_all' возвращает все элементы html-кода из дерева 'item' по
+    искомому идентификатору и классу, если он имеется. Метод 'find_all' возвращает все элементы html-кода из дерева 'items' по
     идентификатору и классу, если он имеется. """
     soup = BeautifulSoup(html, 'html.parser')
     items = soup.find('table', class_='css-1y3vvw9')
@@ -32,7 +32,7 @@ def package_data(names, times):
     пока что сырой html-код, соответственно 'name' и 'time' тоже являются сырым html-кодом. Метод 'get_text()'
     позволяет получить из кода читаемое значение типа 'str'. Проверяя вхождение подстроки '[104' в строку
     'name.get_text()', в изначально пустой массив 'players', методом 'append', добавляются словари формата
-    {name: name.get_text(), 'time': time.get_text() }. В итоге, функция возвращает массив вида: [{},{},{},...]."""
+    {name: name.get_text(), 'time': time.get_text() }. В итоге, функция возвращает массив вида: [{},{},{},...]. """
     players = []
 
     for name, time in zip(names, times):
