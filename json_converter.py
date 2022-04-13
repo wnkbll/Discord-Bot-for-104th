@@ -2,11 +2,11 @@ import json
 import os
 
 from typing import Any
-from parser import parse_main
 from config import settings
+from parser import parse_main
 
-data = parse_main()
-path = settings['path']  # Собственно наименование файла 'path', по умолчанию, файл будет создаваться в папке проекта.
+path_old = settings['path_old']
+path_total = settings['path_total']
 
 
 def write_json_file(obj: Any, path: str):
@@ -16,11 +16,12 @@ def write_json_file(obj: Any, path: str):
         os.makedirs(folder, exist_ok=True)
     with open(path, mode="w", encoding="utf-8") as json_file:
         json.dump(obj, json_file, indent=4)
+        print(f'File {path} has been written')
 
 
 def read_json_file(path: str) -> dict[str, Any]:
     """ Функция читает файл 'path'. В нашем случае будет возвращать массив, записанный в файл 'path', однако может
-    возвращаться и любой другой object, например, словарь. """
+    возвращаться и любой другой object, например словарь. """
     if not os.path.exists(path):
         return {}
     with open(path, encoding="utf-8") as json_file:
